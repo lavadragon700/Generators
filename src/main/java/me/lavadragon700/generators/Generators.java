@@ -9,6 +9,7 @@ public final class Generators extends JavaPlugin {
     @Override
     public void onEnable()
     {
+        int a = 0;
         plugin = this;
         this.saveDefaultConfig();
 
