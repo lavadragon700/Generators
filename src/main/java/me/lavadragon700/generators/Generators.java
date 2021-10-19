@@ -4,11 +4,11 @@ import me.lavadragon700.generators.generator.Generator;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public final class Generators extends JavaPlugin
 {
@@ -16,6 +16,8 @@ public final class Generators extends JavaPlugin
     public static Permission permission = null;
     public static Economy economy = null;
     public static Chat chat = null;
+
+    public Map<Player, ArrayList<Generator>> placedGens = new HashMap<>();
 
     public Set<Generator> gens = new HashSet<>();
 

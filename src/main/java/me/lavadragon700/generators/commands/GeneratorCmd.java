@@ -29,7 +29,7 @@ public class GeneratorCmd implements CommandExecutor
             break;
 
             case 1:
-                if(args[0].equalsIgnoreCase(""))
+                if(args[0].equalsIgnoreCase("help"))
                 {
 
                 }
@@ -56,8 +56,41 @@ public class GeneratorCmd implements CommandExecutor
                         return false;
                     }
 
-
                     plugin.gens.add(new Generator(args[1]));
+                    p.sendMessage(Color.convert("&aGenerator &l" + args[1] + " &r&ahas been created"));
+                    return true;
+                }
+            break;
+
+            case 3:
+                /**
+                 * @description Sets the generators name
+                 *
+                 * args[1] = current gen name
+                 * args[2] = new name
+                 *
+                 * Usage: /gen setName <gen-name> <new-name>
+                 */
+                if(args[0].equalsIgnoreCase("setName"))
+                {
+                    if(!Perms.GENERATOR_SET_NAME.hasPerm(p))
+                    {
+                        p.sendMessage(permMsg);
+                        return false;
+                    }
+                    else if(!Perms.GENERATOR_SET_ALL.hasPerm(p))
+                    {
+                        p.sendMessage(permMsg);
+                        return false;
+                    }
+                    else if(!Perms.ALL_PERMS.hasPerm(p))
+                    {
+                        p.sendMessage(permMsg);
+                        return false;
+                    }
+
+                    plugin.getGenerator(args[1]).setName(args[2]);
+                    p.sendMessage(Color.convert("&aGenerator &l" + args[1] + "'s &r&ahas been set to &l" + args[2]));
                 }
             break;
         }

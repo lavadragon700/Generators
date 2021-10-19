@@ -6,7 +6,11 @@ import org.bukkit.permissions.Permission;
 public enum Perms
 {
     ALL_PERMS("generator.*"),
-    CREATE_GENERATOR("generator.create");
+    CREATE_GENERATOR("generator.create"),
+    GENERATOR_SET_ALL("generator.set.*"),
+    GENERATOR_SET_MATERIAL("generator.set.material"),
+    GENERATOR_SET_ITEMS("generator.set.items"),
+    GENERATOR_SET_NAME("generator.set.name");
 
     private Permission perm;
 

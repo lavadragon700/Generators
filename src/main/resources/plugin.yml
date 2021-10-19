@@ -14,6 +14,21 @@ commands:
 permissions:
   generator.*:
     description: "Can use all permissions"
+    default: false
     children:
       generator.create:
         description: "Can create a generator"
+        default: false
+      generator.set.*:
+        description: "Can use all set commands"
+        default: false
+        children:
+          generator.set.material:
+            description: "Can set the material of the generator"
+            default: false
+          generator.set.items:
+            description: "Can set items available in the generator"
+            default: false
+          generator.set.name:
+            description: "Can set the name of a generator"
+            default: false
