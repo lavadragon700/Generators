@@ -2,3 +2,18 @@ name: Generators
 version: '${project.version}'
 main: me.lavadragon700.generators.Generators
 api-version: 1.17
+
+commands:
+  generator:
+    permission-message: "&4You don't have permission to use that"
+    alises:
+      - g
+      - gen
+
+
+permissions:
+  generator.*:
+    description: "Can use all permissions"
+    children:
+      generator.create:
+        description: "Can create a generator"
