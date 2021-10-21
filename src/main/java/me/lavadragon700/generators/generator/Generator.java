@@ -20,12 +20,16 @@ public class Generator
     private YamlConfig config;
     private Material material;
     private List<String> lore;
+    private Tiers tiers;
+
+
 
     public Generator(YamlConfig config)
     {
         this.config = config;
-        this.name = Color.convert(config.getConfig().getString("name"));
+        this.name = Color.convert(config.getConfig().getString("display_name"));
         this.material = Material.matchMaterial(config.getConfig().getString("display_material"));
+        this.tiers = new Tiers(config);
 
         plugin.gens.add(this);
     }
@@ -33,8 +37,7 @@ public class Generator
     public Generator(String name)
     {
         this.name = Color.convert(name);
-        this.config = new YamlConfig(new File(plugin.getDataFolder() + "/Generators"), name);
-
+        this.config = new YamlConfig(new File(plugin.getDataFolder() + "/GeneratorTypes"), name);
         plugin.gens.add(this);
     }
 
@@ -77,7 +80,12 @@ public class Generator
 
     private void setup()
     {
-        config.getConfig().set("name", getName());
+        config.getConfig().set("display_name", getName());
         config.getConfig().set("display_material", getMaterial());
+
+
+        config.getConfig().set("Tiers", tiers.getTierList());
     }
 }
+
+
